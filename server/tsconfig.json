@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "outDir": "dist",
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "lib": ["dom", "es2017", "es2020.string"],
+    "module": "commonjs",
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "preserveConstEnums": true,
+    "typeRoots": ["./types", "../node_modules/@types"],
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ],
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "baseUrl": "./"
+  },
+  "include": ["./*/*.ts", "./*.ts"],
+  "exclude": ["node_modules", ".vscode"]
+}
