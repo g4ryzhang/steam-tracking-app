@@ -1,0 +1,42 @@
+.container {
+  width: 1000px;
+}
+
+.table {
+  display: grid;
+  grid-template-rows: repeat(5, 60px);
+}
+
+.tableHead {
+  /* text-align: left; */
+  border-bottom: white solid 1px;
+}
+
+.tableResult {
+  text-align: center;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: repeat(5, 200px);
+  align-content: center;
+}
+
+/* .bell:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+} */
+
+.bell {
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.bell.bellActive > svg {
+  color: #738ADB;
+  filter: drop-shadow(0 0 10px #738ADBaa);
+}
+
+.bell:hover {
+  transform: scale(130%); 
+}
