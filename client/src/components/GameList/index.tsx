@@ -1,25 +1,20 @@
 // import { useState } from 'react';
 import styles from './style.module.css';
-import { FaBell } from 'react-icons/fa';
+import { FaBell, FaTrash } from 'react-icons/fa';
 
-const searchResults = [
-  {
-    name: 'Game Name',
-    currentPrice: '20.00',
-    initialPrice: '40.00',
-    discountPercentage: '50%',
-    notify: true,
-  },
-  {
-    name: 'Game Name 2',
-    currentPrice: '20.00',
-    initialPrice: '80.00',
-    discountPercentage: '75%',
-    notify: false,
-  },
-];
+// {
+//   name: game.name,
+//   initialPrice: initPrice,
+//   currentPrice: finalPrice,
+//   discountPercentage: discount,
+// }
 
-const GameList = () => {
+interface GameListProps {
+  searchResults: Record<string, string>[];
+  handleDelete: any;
+}
+
+const GameList: React.FC<GameListProps> = ({ searchResults, handleDelete }) => {
   return (
     <div className={styles.container}>
       <div className={styles.table}>
@@ -29,6 +24,7 @@ const GameList = () => {
           <div>Initial</div>
           <div>Discount</div>
           <div>Notification</div>
+          <div>Delete</div>
         </div>
         {searchResults.map((g, idx) => {
           return (
@@ -40,8 +36,15 @@ const GameList = () => {
               <div>{g.currentPrice}</div>
               <div>{g.initialPrice}</div>
               <div>{g.discountPercentage}</div>
-              <div className={`${styles.bell} ${g.notify ? styles.bellActive : null}`}>
+              <div
+                className={`${styles.bell} ${
+                  g.notify ? styles.bellActive : null
+                }`}
+              >
                 <FaBell />
+              </div>
+              <div className={styles.trash} onClick={() => handleDelete(g.name)}>
+                <FaTrash />
               </div>
             </div>
           );

@@ -18,6 +18,7 @@
   },
   "plugins": ["@typescript-eslint", "react", "prettier", "react-refresh"],
   "rules": {
-    "react-refresh/only-export-components": "warn"
+    "react-refresh/only-export-components": "warn",
+    "react/prop-types": 0
   }
 }
