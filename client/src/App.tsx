@@ -34,12 +34,13 @@ const App = () => {
         name: value,
         currency: 'cad',
       });
-
-      setGameList((list) => {
-        const newList = [...list];
-        newList.push(res.data);
-        return newList;
-      });
+      if (res.status === 201) {
+        setGameList((list) => {
+          const newList = [...list];
+          newList.push(res.data);
+          return newList;
+        });
+      }
     } catch (e) {
       console.error(e);
     } finally {
@@ -50,15 +51,26 @@ const App = () => {
   };
 
   const listAllGames = async () => {
-    const res = await axios.get('/api/games');
-
-    setGameList(res.data);
+    try {
+      const res = await axios.get('/api/games');
+      if (res.status === 200) {
+        setGameList(res.data.games);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   const deleteGame = async (name: string) => {
-    const res = await axios.delete(`/api/games?name=${name}`);
-
-    setGameList(res.data);
+    try {
+      const res = await axios.delete(`/api/games?name=${name}`);
+      if (res.status === 200) {
+        const newList = gameList.filter(g => g.name !== name);
+        setGameList(newList);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (
